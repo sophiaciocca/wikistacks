@@ -2,8 +2,16 @@
 
 {% block content %}
   <h3>Pages</h3>
+  <h4>{{page}}</h4>
   <hr>
   <ul class="list-unstyled">
     <!-- PLACEHOLDER LIST OF PAGES -->
+    {% for page in nunjucksPages %}
+
+      <li><h5><a href = "/wiki/{{page.urlTitle}}">{{page.title}}</a></h5>
+
+    {% endfor %}
+
+
   </ul>
 {% endblock %}

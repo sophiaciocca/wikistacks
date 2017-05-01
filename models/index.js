@@ -34,6 +34,8 @@ Page.hook('afterValidate', function(page, options) {
     page.urlTitle = createUrlTitle(page.title);
 });
 
+Page.belongsTo(User, { as: 'author'});
+
 var User = db.define('user', {
     name: {
         type: Sequelize.STRING,
