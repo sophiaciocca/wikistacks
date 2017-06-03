@@ -18,9 +18,14 @@ nunjucks.configure('views', {noCache: true});
 //logging middleware
 app.use(morgan('dev'));
 
-//body parser
+//body parser (for 'puts' and 'posts')
 app.use(bodyParser.urlencoded({ extended: true })); // for HTML form submits
 app.use(bodyParser.json()); //in case there are any AJAX requests
+
+//error handling middleware
+app.use(function (err, req, res, next) {
+    res.status(500).send(err.message);
+});
 
 //sync our models to database
 models.db.sync({force: true})
@@ -36,4 +41,10 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use('/', routes);
 
 
+/*QUESTIONS
+    1) for hooks on Models: 'beforeValidate' vs. 'afterValidate'? 
+    We used 'afterValidate' but they used 'beforeValidate' in video
+
+    2) Go over the connecting-user part again..... actually prob do the whole workshop again
+*/
 

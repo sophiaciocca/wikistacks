@@ -5,10 +5,10 @@ const wikiRouter = require('./wiki');
 const models = require('../models');
 const Page = models.Page;
 const User = models.User;
-//const userRouter = require('./user');
+const userRouter = require('./user');
 
 router.use('/wiki', wikiRouter);
-//router.use('/user', userRouter);
+router.use('/user', userRouter);
 
 //homepage router function
 router.get('/', (req, res, next) => {
